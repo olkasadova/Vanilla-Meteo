@@ -1,0 +1,34 @@
+body {
+background-color: rgb(243, 239, 196);
+font-family: Roboto;
+}
+
+.temperature-block{
+    background: rgb(236, 236, 100);
+    border-radius: 94px 94px 94px 94px;
+    height: 100px;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    box-shadow: 10px 10px 5px 0px rgba(112,106,112,0.63);
+}
+
+.weather-parameters-block{
+    background: rgb(236, 236, 100);
+    border-radius: 94px 94px 94px 94px;
+    height: 100px;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    box-shadow: 10px 10px 5px 0px rgba(112,106,112,0.63);
+}
+
+.forecast-block{
+    background: rgb(236, 236, 100);
+    border-radius: 94px 94px 94px 94px;
+    height: 100px;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    box-shadow: 10px 10px 5px 0px rgba(112,106,112,0.63); 
+}

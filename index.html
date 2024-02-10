@@ -2,43 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vanilla Meteo forecast</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,400;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
+    
     <header>
         <form>
             <input type="search" placeholder="Please enter the city">
             <input type="submit" value="Search">
         </form>
         <br>
-    <form>
-        <input type="radio" name="degrees" value="Celsius">
-        <label for="Celsius"> Celsius</label> </form>
-        <input type="radio" name="degrees" value="Farenhiet">
-        <label for="Farenhiet"> Farenhiet</label> </br>
-    </form>
     </header>
-    <h1> 20 C </h1>
-    <div> Sun</div>
-    <div>
-        Edinburgh, Scotland
-    </div>
-    <p>
-        Saturday, 09 February, 20:00
-    </p>
+    <form>
+        <label> Celsius <input type="radio" name="degrees" value="Celsius"> </label>
+        
+        <label> Farenhiet <input type="radio" name="degrees" value="Farenhiet"></label>
+         </br>
+    </form>
     
+    <div class="temperature-block">
+        
+        <h1> 20 C </h1>
+        <div> Sun</div>
+        <div>
+            Edinburgh, Scotland
+        </div>
+        <p>
+            Saturday, 09 February, 20:00
+        </p>
+    </div>
 
-    <div>
+    <div class="weather-parameters-block">
         Humidity: 80%, Wind: 2km/h
     </div>
 
-    <div>
-        Forecast
+    <div class="forecast-block">
+        <div>
+            Forecast
+        </div>
+        <p>
+            Sunday 10C, Monday 12C, Tuesday 11C
+        </p>
     </div>
-    <p>
-        Sunday 10C, Monday 12C, Tuesday 11C
-    </p>
     <footer> Built by
          <a href = "https://github.com/olkasadova" target="_blank" rel="noopener noreferrer">Olha Sadova</a> and Netlify
          <a href = "https://vanillameteo.netlify.app/" target="_blank" rel="noopener noreferrer">Portfolio Website</a>
