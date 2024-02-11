@@ -15,8 +15,8 @@
             <span class="logo-text">V a n i l l a   M e t e o</span>
         </div>
 
-        <form class="search-form">
-            <input type="search" placeholder="Please enter the city" required class="search-form-input">
+        <form class="search-form" id="search-form">
+            <input type="search" placeholder="Please enter the city" required class="search-form-input" id="city-form-input">
             <input type="submit" value="Search" class="search-form-submit">
         </form>
         <br>
@@ -30,10 +30,11 @@
     
     <div class="temperature-block">
         
-        <h1> 20 C </h1>
-        <div> Sun</div>
-        <div>
-            Edinburgh, Scotland
+        <span class="temperature-value"> 20 </span> 
+        <span class="temperature-degree-scale">C </span>
+        <span class="tempareture-icon"> Sun </span>
+        <div class="city-display-weather">
+            Edinburgh
         </div>
         <p>
             Saturday, 09 February, 20:00
@@ -57,4 +58,5 @@
          <a href = "https://vanillameteo.netlify.app/" target="_blank" rel="noopener noreferrer">Portfolio Website</a>
     </footer>
 </body>
+<script src="src/search.js"></script>
 </html>

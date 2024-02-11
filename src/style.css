@@ -15,6 +15,7 @@ img{
 }
 .logo-text{
     vertical-align:middle
+
 }
 
 .search-form{
@@ -35,6 +36,7 @@ img{
     border:none;
     border-radius: 10px;
     background:rgb(176, 176, 174) ;
+    color: white;
     font-size: medium;
     margin: 10px;
     width:100px;
