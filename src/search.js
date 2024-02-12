@@ -31,7 +31,35 @@ function displayCityWeather (event) {
 
 }
 
+function displayDate () {
+    //get current date-time data
+    let weekDayslist = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    let monthsList = ["January","February","MArch","April","May","June","July","August","September","October","November","December"];
+    let todayDate = new Date();
+    let day = todayDate.getDay();
+    let date = todayDate.getDate();
+    let month = todayDate.getMonth();
+    let hours = todayDate.getHours ();
+    let minutes = todayDate.getMinutes();
+    //get corresponsing elements
+    let displayWeekDay = document.querySelector(".weekday")
+    let displayDay = document.querySelector(".day");
+    let displayMonth = document.querySelector(".month");
+    let displayHours = document.querySelector(".time-hours");
+    let displayMinutes = document.querySelector(".time-minutes");
+
+    displayWeekDay.innerHTML = weekDayslist[day];
+    displayDay.innerHTML = date;
+    displayMonth.innerHTML = monthsList[month];
+    displayHours.innerHTML = hours;
+    displayMinutes.innerHTML = minutes;
+
+    console.log (todayDate, day, date, month, hours, minutes);
+
+}
 
 let searchFormElement = document.querySelector(".search-form");
 searchFormElement.addEventListener("submit", displayCityWeather);
+
+displayDate();
 
