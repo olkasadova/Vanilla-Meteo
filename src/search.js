@@ -1,8 +1,15 @@
 function refreshWeather(response){
     let currentCityTemp = Math.round(response.data.temperature.current);
+    let currentCityHumidity = response.data.temperature.humidity;
+    let currentCityWind = Math.round(response.data.wind.speed);
+
     let displayTemp = document.querySelector (".temperature-value");
+    let displayHumidity = document.querySelector (".humidity-value");
+    let displayWind = document.querySelector (".wind-value");
+
     displayTemp.innerHTML = currentCityTemp;
-    console.log (currentCityTemp);
+    displayHumidity.innerHTML = currentCityHumidity;
+    displayWind.innerHTML = currentCityWind;
 }
 
 
