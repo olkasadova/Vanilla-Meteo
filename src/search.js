@@ -15,8 +15,10 @@ function refreshWeather(response){
 
 function searchCity (city){
     //serach for city weather values through API
+
     let APIkey="c9c17abaa3otf64ba314bf3fce705208";
-    let APIUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${APIkey}`;
+
+    let APIUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&units${units}&key=${APIkey}`;
     axios.get(APIUrl).then (refreshWeather);
 
 }
@@ -57,9 +59,33 @@ function displayDate () {
     console.log (todayDate, day, date, month, hours, minutes);
 
 }
+function getUserUnits (event) {
+    let unitsMetric = document.querySelector(".metric").checked;
+    let unitsImperial = document.querySelector(".imperial").checked;
+    let unitSelected= "";
+
+    if (unitsMetric){
+        console.log(unitsMetric);
+        unitsSelected = "metric";
+        console.log(unitsSelected);
+    }
+    if (unitsImperial){
+        console.log(unitsImperial);
+        unitsSelected = "imperial";
+        console.log(unitsSelected);
+        return (unitsSelected);
+    }
+   // console.log(unitsMetric);
+   // return(unitsSelected);
+}
 
 let searchFormElement = document.querySelector(".search-form");
 searchFormElement.addEventListener("submit", displayCityWeather);
+
+let unitsC = document.querySelector(".metric");
+unitsC.addEventListener("click", getUserUnits);
+let unitsF = document.querySelector(".imperial");
+unitsF.addEventListener("click", getUserUnits);
 
 displayDate();
 
