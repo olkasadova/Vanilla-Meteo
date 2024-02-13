@@ -53,6 +53,10 @@ img{
     padding: 20px;
     box-shadow: 10px 10px 5px 0px rgba(112,106,112,0.63);
 }
+.tempareture-icon{
+    height: 50px;
+    width: 70px;
+}
 
 .weather-parameters-block{
     background: rgb(238, 238, 153);

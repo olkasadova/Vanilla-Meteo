@@ -1,5 +1,8 @@
 function refreshWeather(response){
-
+     //if (response.status === "not_found"){
+       // alert ("City was not found. Try")
+    //}
+   
     let currentCityTemp = Math.round(response.data.temperature.current);
     let currentCityHumidity = response.data.temperature.humidity;
     let currentCityWind = Math.round(response.data.wind.speed);
@@ -7,9 +10,9 @@ function refreshWeather(response){
     let displayTemp = document.querySelector (".temperature-value");
     let displayHumidity = document.querySelector (".humidity-value");
     let displayWind = document.querySelector (".wind-value");
+    let tempUnits = document.querySelector (".temperature-degree-scale");
+    let windUnits = document.querySelector(".wind-units");
     let units = getUserUnits (event);
-
-    //display in metric units returned by default from API
 
     //convert returned values to imperial values
     if (units === "imperial"){
@@ -18,31 +21,35 @@ function refreshWeather(response){
        displayTemp.innerHTML = convertedValue;
        convertedCityWind = Math.round(currentCityWind*0.62);
        displayWind.innerHTML = convertedCityWind;
+       tempUnits.innerHTML = "F";
+       windUnits.innerHTML = "m/h"
     }
+     //display in metric units returned by default from API
     else
         {
             displayTemp.innerHTML = currentCityTemp;
             displayHumidity.innerHTML = currentCityHumidity;
             displayWind.innerHTML = currentCityWind;
-            console.log (currentCityTemp, currentCityWind);
+            tempUnits.innerHTML = "C";
+            windUnits.innerHTML = "km/h";
+        }
+    let displayIcon = document.querySelector (".tempareture-icon");
+    let apiIcon = response.data.condition.icon;
+        switch (apiIcon){
+            case "broken-clouds-night": displayIcon.src = "images/free-blue-clouds-and-blue-moon-icon-16538.png"
+            case "broken-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
+            case "rain-day": displayIcon.src = "images/free-downpour-rainy-day-icon-16531.png"
+            case "scattered-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
         }
 }
-
 
 function searchCity (city){
     //serach for city weather values through API
     let APIkey="c9c17abaa3otf64ba314bf3fce705208";
-
     let APIUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${APIkey}`;
+
     axios.get(APIUrl).then (refreshWeather);
-
 }
-
-//function convertToImperial (degree){
-    //let tempValue = Math.round(response.data.temperature.current);
-   // let convertedValue = degree.value *9/5 + 32;
-    //console.log (degree.value, convertedValue);
-//}
 
 
 function displayCityWeather (event) {
@@ -87,11 +94,9 @@ function getUserUnits (event) {
 
     if (unitsMetric){
         unitSelected = "metric";
-        console.log(unitSelected);
     }
     if (unitsImperial){    
         unitSelected = "imperial";
-        console.log(unitSelected);
         return (unitSelected);
     }
 }
