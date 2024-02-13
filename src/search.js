@@ -1,4 +1,5 @@
 function refreshWeather(response){
+
     let currentCityTemp = Math.round(response.data.temperature.current);
     let currentCityHumidity = response.data.temperature.humidity;
     let currentCityWind = Math.round(response.data.wind.speed);
@@ -6,23 +7,42 @@ function refreshWeather(response){
     let displayTemp = document.querySelector (".temperature-value");
     let displayHumidity = document.querySelector (".humidity-value");
     let displayWind = document.querySelector (".wind-value");
+    let units = getUserUnits (event);
 
-    displayTemp.innerHTML = currentCityTemp;
-    displayHumidity.innerHTML = currentCityHumidity;
-    displayWind.innerHTML = currentCityWind;
+    //display in metric units returned by default from API
+
+    //convert returned values to imperial values
+    if (units === "imperial"){
+       // convertToImperial(displayTemp);
+       let convertedValue = Math.round(currentCityTemp *9/5 + 32);
+       displayTemp.innerHTML = convertedValue;
+       convertedCityWind = Math.round(currentCityWind*0.62);
+       displayWind.innerHTML = convertedCityWind;
+    }
+    else
+        {
+            displayTemp.innerHTML = currentCityTemp;
+            displayHumidity.innerHTML = currentCityHumidity;
+            displayWind.innerHTML = currentCityWind;
+            console.log (currentCityTemp, currentCityWind);
+        }
 }
 
 
 function searchCity (city){
     //serach for city weather values through API
-    let units = getUserUnits (event);
     let APIkey="c9c17abaa3otf64ba314bf3fce705208";
-    console.log (units);
 
-    let APIUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&units=${units}&key=${APIkey}`;
+    let APIUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${APIkey}`;
     axios.get(APIUrl).then (refreshWeather);
 
 }
+
+//function convertToImperial (degree){
+    //let tempValue = Math.round(response.data.temperature.current);
+   // let convertedValue = degree.value *9/5 + 32;
+    //console.log (degree.value, convertedValue);
+//}
 
 
 function displayCityWeather (event) {
@@ -66,18 +86,14 @@ function getUserUnits (event) {
     let unitSelected= "";
 
     if (unitsMetric){
-       
-        unitsSelected = "metric";
-        //console.log(unitsSelected);
+        unitSelected = "metric";
+        console.log(unitSelected);
     }
-    if (unitsImperial){
-       
-        unitsSelected = "imperial";
-       // console.log(unitsSelected);
-        return (unitsSelected);
+    if (unitsImperial){    
+        unitSelected = "imperial";
+        console.log(unitSelected);
+        return (unitSelected);
     }
-   // console.log(unitsMetric);
-   // return(unitsSelected);
 }
 
 let searchFormElement = document.querySelector(".search-form");
