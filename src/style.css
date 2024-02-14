@@ -53,9 +53,27 @@ img{
     padding: 20px;
     box-shadow: 10px 10px 5px 0px rgba(112,106,112,0.63);
 }
+.temperature-value{
+    font-size: 30px;
+    padding-left: 40px;
+}
+
+.temperature-degree-scale{
+    font-size: 30px;
+    padding-left: 5px;
+}
 .tempareture-icon{
+    padding-left: 150px;
     height: 50px;
     width: 70px;
+}
+.city-display-weather{
+    font-size: 20px;
+    padding-left: 30px
+}
+.weekday{
+    font-size: 15px;
+    padding: 30px;
 }
 
 .weather-parameters-block{
@@ -63,9 +81,35 @@ img{
     border-radius: 94px 94px 94px 94px;
     height: 100px;
     max-width: 400px;
-    margin: 30px auto;
+    margin: 40px auto;
     padding: 20px;
     box-shadow: 10px 10px 5px 0px rgba(112,106,112,0.63);
+}
+
+.humidity-text{
+    font-size: 20px;
+    padding-left: 50px;
+    text-align: center;
+}
+.humidity-value{
+    color: brown;
+    font-size: 20px;
+}
+.humidity-units{
+    color: brown;
+    font-size: 20px;
+}
+.wind-text{
+    font-size: 20px;
+    padding-left: 10px;
+}
+.wind-value{
+    color: brown;
+    font-size: 20px;
+}
+.wind-units{
+    color: brown;
+    font-size: 20px;
 }
 
 .forecast-block{
