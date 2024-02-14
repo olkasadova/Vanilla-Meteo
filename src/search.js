@@ -37,11 +37,17 @@ function refreshWeather(response){
     let apiIcon = response.data.condition.icon;
         switch (apiIcon){
             case "broken-clouds-night": displayIcon.src = "images/free-blue-clouds-and-blue-moon-icon-16538.png"
+                break;
             case "scattered-clouds-night": displayIcon.src = "images/free-blue-clouds-and-blue-moon-icon-16538.png"
+            break;
             case "broken-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
+            break;
             case "rain-day": displayIcon.src = "images/free-downpour-rainy-day-icon-16531.png"
+            break;
             case "scattered-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
+            break;
             case "clear-sky-night": displayIcon.src= "images/free-yellow-moon-icon-16536.png"
+            break;
             case "clear-sky-day" : displayIcon.src= "images/free-icon-yellow-sun.png"
         }
         console.log (apiIcon);
