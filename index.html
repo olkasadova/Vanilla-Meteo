@@ -31,13 +31,13 @@
     
     <div class="temperature-block">
         
-        <span class="temperature-value"> 20 </span> 
+        <span class="temperature-value"> 5 </span> 
         <span class="temperature-degree-scale">C </span>
         <img class = "tempareture-icon" src = "images/sun-outline.png" alt="tempareture-icon"> </img>
         <div class="city-display-weather">
             Edinburgh
         </div>
-        <div>
+        <div class = "current-date">
         <span class="weekday"> Saturday </span>
         <span class="day"> 09 </span>
         <span class="month"> February </span>
@@ -57,18 +57,41 @@
         <span class = "wind-units">km/h</span>
     </div>
 
-    <div class="forecast-block">
-        <div>
+    <div class="forecast-block1">
+        <div class = "heading-forecast">
             Forecast
         </div>
-        <p>
-            Sunday 10C, Monday 12C, Tuesday 11C
-        </p>
-    </div>
-    <footer> Built by
-         <a href = "https://github.com/olkasadova" target="_blank" rel="noopener noreferrer">Olha Sadova</a> and Netlify
-         <a href = "https://vanillameteo.netlify.app/" target="_blank" rel="noopener noreferrer">Portfolio Website</a>
-    </footer>
+            <div class="forecast-week">
+                <div class="Day">
+                    <div class = "row">Sun</div> 
+                    <div class="col">10C 12C</div>
+                    <img class="NextDay-icon" src="images/sun-outline.png" alt="NextDay-icon"> </img>
+                </div>
+                <div class="Day">
+                    <div class="row">Mon <div>
+                    <div class="col2">12C 15C</div>
+                    <img class="NextDay1-icon" src="images/sun-outline.png" alt="NextDay1-icon"> </img>
+                </div>
+                <div class="Day">
+                    <div class="row">Tue </div>
+                    <div class="col3">11C 13C</div>
+                    <img class="NextDay2-icon" src="images/sun-outline.png" alt="NextDay2-icon"> </img>
+                 </div>
+                 <div class="Day">
+                    <div class="row">Wed </div>
+                    <div class="col4">9C 12C </div>
+                    <img class="NextDay3-icon" src="images/sun-outline.png" alt="NextDay3-icon"> </img>
+                </div>
+                <div class="Day">
+                    <div class="row">Thu</div>
+                    <div class="col5">5C 7C</div>
+                    <img class="NextDay4-icon" src="images/sun-outline.png" alt="NextDay4-icon"> </img>
+                </div>
+            </div>
+        </div>
+   
+
+    
 </body>
 <script src="src/search.js"></script>
 </html>
