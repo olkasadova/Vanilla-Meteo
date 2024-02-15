@@ -119,5 +119,27 @@ unitsC.addEventListener("click", getUserUnits);
 let unitsF = document.querySelector(".imperial");
 unitsF.addEventListener("click", getUserUnits);
 
-displayDate();
+//function to display weather forecast for each next 5 days
+function displayForecast (){
+    let forecastHTML="";
+    let days = ["Mon","Tue", "Wed", "Thu", "Fri"];
+    days.forEach(function (day)
+        {
+        forecastHTML = forecastHTML +
+        `<div class="Day">
+        <div class = "forecast-date">${day}</div> 
+        <div class="forecast-temp">
+            <span class="forecast-temp-min">12C</span> 
+            <span class="forecast-temp-max">15C</span>
+        </div>
+        <img class="NextDay-icon" src="images/sun-outline.png" alt="NextDay-icon"> </img>`
+        ;
 
+        }
+    )
+    let forecast= document.querySelector(".forecast-week");
+    forecast.innerHTML = forecastHTML;
+ }
+
+displayDate();
+displayForecast();

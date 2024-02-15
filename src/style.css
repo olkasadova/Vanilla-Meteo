@@ -17,6 +17,11 @@ img{
     vertical-align:middle
 
 }
+.unit-form{
+    max-width: 600px;
+    padding: 20px;
+    margin: 20px auto;
+}
 
 .search-form{
     max-width: 600px;
@@ -141,6 +146,5 @@ img{
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: calc(30% - 20px);
-    border: 2px solid yellow;
 }  
 
