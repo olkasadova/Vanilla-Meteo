@@ -33,27 +33,36 @@ function refreshWeather(response){
             tempUnits.innerHTML = "C";
             windUnits.innerHTML = "km/h";
         }
-    let displayIcon = document.querySelector (".tempareture-icon");
-    let apiIcon = response.data.condition.icon;
-        switch (apiIcon){
-            case "broken-clouds-night": displayIcon.src = "images/free-blue-clouds-and-blue-moon-icon-16538.png"
-                break;
-            case "scattered-clouds-night": displayIcon.src = "images/free-blue-clouds-and-blue-moon-icon-16538.png"
-            break;
-            case "broken-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
-            break;
-            case "rain-day": displayIcon.src = "images/free-downpour-rainy-day-icon-16531.png"
-            break;
-            case "scattered-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
-            break;
-            case "clear-sky-night": displayIcon.src= "images/free-yellow-moon-icon-16536.png"
-            break;
-            case "clear-sky-day" : displayIcon.src= "images/free-icon-yellow-sun.png"
-            break;
-            case "few-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
-            break;
-        }
-        console.log (apiIcon);
+        let iconHTML = document.querySelector (".tempareture-icon");
+     displayIcon (response.data.condition, iconHTML);  
+     getForecast (response.data.city);
+   
+}
+
+function displayIcon (condition, icon) 
+{
+    let displayIcon = icon;
+    let apiIcon = condition.icon;
+    console.log(icon);
+    switch (apiIcon){
+        case "broken-clouds-night": displayIcon.src = "images/free-blue-clouds-and-blue-moon-icon-16538.png"
+        break;
+        case "scattered-clouds-night": displayIcon.src = "images/free-blue-clouds-and-blue-moon-icon-16538.png"
+        break;
+        case "broken-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
+        break;
+        case "rain-day": displayIcon.src = "images/free-downpour-rainy-day-icon-16531.png"
+        break;
+        case "scattered-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
+        break;
+        case "clear-sky-night": displayIcon.src= "images/free-yellow-moon-icon-16536.png"
+        break;
+        case "clear-sky-day" : displayIcon.src= "images/free-icon-yellow-sun.png"
+        break;
+        case "few-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
+        break;
+    }
+    console.log (apiIcon)
 }
 
 function searchCity (city){
@@ -97,8 +106,6 @@ function displayDate () {
     displayHours.innerHTML = hours;
     displayMinutes.innerHTML = minutes;
 
-    console.log (todayDate, day, date, month, hours, minutes);
-
 }
 function getUserUnits (event) {
     let unitsMetric = document.querySelector(".metric").checked;
@@ -116,8 +123,6 @@ function getUserUnits (event) {
 
 let searchFormElement = document.querySelector(".search-form");
 searchFormElement.addEventListener("submit", displayCityWeather);
-//searchFormElement.addEventListener("submit", getForecast);
-
 
 let unitsC = document.querySelector(".metric");
 unitsC.addEventListener("click", getUserUnits);
@@ -130,33 +135,31 @@ function getForecast (city){
     console.log (APIUrl);
     axios.get(APIUrl).then (displayForecastAPI);
 }
-
-function displayForecastAPI(response){
-    console.log (response.data);
-}
-
 //function to display weather forecast for each next 5 days
-function displayForecast (){
+function displayForecastAPI(response){
+   
     let forecastHTML="";
     let days = ["Mon","Tue", "Wed", "Thu", "Fri"];
-    days.forEach(function (day)
-        {
+    days.forEach (function (day){
+        let index = days.indexOf (day);
+        console.log (index);
+        let forecastTemperatureMin = Math.round(response.data.daily[index].temperature.minimum);
+        let forecastTemperatureMax = Math.round(response.data.daily[index].temperature.maximum);
+        let iconHTML = response.data.daily[index].condition.icon_url;
+
         forecastHTML = forecastHTML +
         `<div class="Day">
         <div class = "forecast-date">${day}</div> 
         <div class="forecast-temp">
-            <span class="forecast-temp-min">12C</span> 
-            <span class="forecast-temp-max">15C</span>
-        </div>
-        <img class="NextDay-icon" src="images/sun-outline.png" alt="NextDay-icon"> </img>`
-        ;
-
-        }
+        <span class="forecast-temp-min">${forecastTemperatureMin}C</span> 
+        <span class="forecast-temp-max">${forecastTemperatureMax}C</span>
+        <img class="NextDay-icon" src=${iconHTML} alt="NextDay-icon"> </img>`
+       
+    }
     )
     let forecast= document.querySelector(".forecast-week");
     forecast.innerHTML = forecastHTML;
- }
+}
 
 displayDate();
-displayForecast();
-getForecast("Edinburgh");
+
