@@ -135,21 +135,30 @@ function getForecast (city){
     console.log (APIUrl);
     axios.get(APIUrl).then (displayForecastAPI);
 }
+
+function formatDay(timestamp){
+    let date = new Date(timestamp*1000);
+    let Dayslist = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+    return Dayslist[date.getDay()];
+}
+
 //function to display weather forecast for each next 5 days
 function displayForecastAPI(response){
    
     let forecastHTML="";
-    let days = ["Mon","Tue", "Wed", "Thu", "Fri"];
+    let days = [0,1,2,3,4];
     days.forEach (function (day){
         let index = days.indexOf (day);
         console.log (index);
         let forecastTemperatureMin = Math.round(response.data.daily[index].temperature.minimum);
         let forecastTemperatureMax = Math.round(response.data.daily[index].temperature.maximum);
         let iconHTML = response.data.daily[index].condition.icon_url;
+        let time = response.data.daily[index].time;
 
         forecastHTML = forecastHTML +
         `<div class="Day">
-        <div class = "forecast-date">${day}</div> 
+        <div class = "forecast-date">${formatDay(time)}</div> 
         <div class="forecast-temp">
         <span class="forecast-temp-min">${forecastTemperatureMin}C</span> 
         <span class="forecast-temp-max">${forecastTemperatureMax}C</span>
