@@ -148,3 +148,8 @@ img{
     flex-basis: calc(30% - 20px);
 }  
 
+.forecast-week{
+    font-size:small;
+    font-weight: 500;
+}
+

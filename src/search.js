@@ -43,7 +43,6 @@ function displayIcon (condition, icon)
 {
     let displayIcon = icon;
     let apiIcon = condition.icon;
-    console.log(icon);
     switch (apiIcon){
         case "broken-clouds-night": displayIcon.src = "images/free-blue-clouds-and-blue-moon-icon-16538.png"
         break;
@@ -62,7 +61,6 @@ function displayIcon (condition, icon)
         case "few-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
         break;
     }
-    console.log (apiIcon)
 }
 
 function searchCity (city){
@@ -132,7 +130,6 @@ unitsF.addEventListener("click", getUserUnits);
 function getForecast (city){
     let APIkey="c9c17abaa3otf64ba314bf3fce705208";
     let APIUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${APIkey}`;
-    console.log (APIUrl);
     axios.get(APIUrl).then (displayForecastAPI);
 }
 
@@ -150,7 +147,6 @@ function displayForecastAPI(response){
     let days = [0,1,2,3,4];
     days.forEach (function (day){
         let index = days.indexOf (day);
-        console.log (index);
         let forecastTemperatureMin = Math.round(response.data.daily[index].temperature.minimum);
         let forecastTemperatureMax = Math.round(response.data.daily[index].temperature.maximum);
         let iconHTML = response.data.daily[index].condition.icon_url;
