@@ -49,6 +49,9 @@ function refreshWeather(response){
             case "clear-sky-night": displayIcon.src= "images/free-yellow-moon-icon-16536.png"
             break;
             case "clear-sky-day" : displayIcon.src= "images/free-icon-yellow-sun.png"
+            break;
+            case "few-clouds-day": displayIcon.src = "images/free-yellow-sun-and-blue-cloud-icon-16528.png"
+            break;
         }
         console.log (apiIcon);
 }
@@ -113,11 +116,24 @@ function getUserUnits (event) {
 
 let searchFormElement = document.querySelector(".search-form");
 searchFormElement.addEventListener("submit", displayCityWeather);
+//searchFormElement.addEventListener("submit", getForecast);
+
 
 let unitsC = document.querySelector(".metric");
 unitsC.addEventListener("click", getUserUnits);
 let unitsF = document.querySelector(".imperial");
 unitsF.addEventListener("click", getUserUnits);
+
+function getForecast (city){
+    let APIkey="c9c17abaa3otf64ba314bf3fce705208";
+    let APIUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${APIkey}`;
+    console.log (APIUrl);
+    axios.get(APIUrl).then (displayForecastAPI);
+}
+
+function displayForecastAPI(response){
+    console.log (response.data);
+}
 
 //function to display weather forecast for each next 5 days
 function displayForecast (){
@@ -143,3 +159,4 @@ function displayForecast (){
 
 displayDate();
 displayForecast();
+getForecast("Edinburgh");
